@@ -10,13 +10,15 @@ def imprime_matriz(M,nome):
 
 def multiplicação(a,b):
     n = len(a)
-    p = len(b)
+    p = len(a[0])
     m = len(b[0])
     c = [[0] * m for _ in range (n)]
     for i in range(n):
         for j in range(m):
+            soma = 0
             for k in range(p):
-                c[i][j] = a[i][k] * b[k][j]    
+                c[i][j] = a[i][k] * b[k][j]
+            c[i][j] = soma    
     return c
 
 a = [
