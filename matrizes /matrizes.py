@@ -1,4 +1,4 @@
-def matriz_a(A):
+def matriz_a():
     linhas = int(input('quantas linhas deseja: '))
     colunas = int(input('quantas colunas deseja: '))
     matriz = []
@@ -10,7 +10,7 @@ def matriz_a(A):
         matriz.append(linha)
     return matriz
 
-def matriz_b(A):
+def matriz_b():
     linhas = int(input('quantas linhas deseja: '))
     colunas = int(input('quantas colunas deseja: '))
     matriz = []
@@ -57,6 +57,15 @@ def soma_matrizes(a,b):
             c[i][j] = a[i][j] + b[i][j]
     return c
 
+def subtrai_matrizes(a,b):
+    n = len(a)
+    m = len(a[0])
+    c = [[0] * m for _ in range (n)]
+    for i in range(n):
+        for j in range(m):
+            c[i][j] = a[i][j] - b[i][j]
+    return c
+
 def transposta(A):
     n = len(A)
     m = len(A[0])
@@ -66,19 +75,29 @@ def transposta(A):
             t[j][i] = A[i][j]
     return t
 
-operacao = input('qual operação deseja realizar: Soma \033[1;31;43m(S)\033[m/ Transposta \033[1;31;43m(T)\033[m / Multiplicação \033[1;31;43m(M)\033[m / Diagonal Principal e Determinante \033[1;31;43m(DPD)\033[m').lower()
+operacao = input('qual operação deseja realizar: Soma \033[1;31;43m(S)\033[m/ Subtrai \033[1;31;43m(Sub)\033[m/ Transposta \033[1;31;43m(T)\033[m / Multiplicação \033[1;31;43m(M)\033[m / Diagonal Principal e Determinante \033[1;31;43m(DPD)\033[m').lower()
 
 if operacao =='s':
 
-    a = matriz_a([])
-    b = matriz_b([])
+    a = matriz_a()
+    b = matriz_b()
 
     c = soma_matrizes(a,b)
     imprime_matriz(a,'a')
     imprime_matriz(b,'b')
     imprime_matriz(c,'a + b')
 
-if operacao =='t':
+elif operacao =='sub':
+
+    a = matriz_a()
+    b = matriz_b()
+
+    c = subtrai_matrizes(a,b)
+    imprime_matriz(a,'a')
+    imprime_matriz(b,'b')
+    imprime_matriz(c,'a - b')
+
+elif operacao =='t':
 
     a = matriz_a([])
 
@@ -87,10 +106,10 @@ if operacao =='t':
     imprime_matriz(a,'a')
     imprime_matriz(t,'t')
 
-if operacao =='m':
+elif operacao =='m':
 
-    a = matriz_a([])
-    b = matriz_b([])
+    a = matriz_a()
+    b = matriz_b()
 
     c = multiplicação(a,b)
 
@@ -98,9 +117,9 @@ if operacao =='m':
     imprime_matriz(b,'b')
     imprime_matriz(c,'a x b')
 
-if operacao =='dpd':
+elif operacao =='dpd':
 
-    a = matriz_a([])
+    a = matriz_a()
 
     d = diagonal(a)
 
